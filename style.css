@@ -1,0 +1,40 @@
+ 
+.chart-container {
+    /* background: rebeccapurple; */
+    position: relative;
+    height: 40vh;
+    /* width: 80vw; */
+    display: flex;
+    align-items: center;
+} 
+body {
+    background-color: #f1f1f1e8;
+}
+.red{
+    background-color: red;
+}
+.block{
+    /* border-style: solid; */
+    padding: 2rem 1rem;
+    border-radius: .3rem;
+    background-color: #e9ecef;
+
+}
+.block2{
+    /* border-style: solid; */
+    padding: 2rem 1rem;
+    border-radius: .3rem;
+    background-color: #ffffff;
+    height: 100%;
+
+}
+ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.rcm-book{
+    background-color: #e9ecef;
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+}
