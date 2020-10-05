@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"
+        integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg=="
+        crossorigin="anonymous"></script>
+    <script>
+        const getUsers = async () => {
+            try {
+                const response = await axios.get("http://localhost:90/csv/json.php")
+                console.log('response: ', response.data);
+                // do something about response
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        getUsers();
+
+    </script>
+</body>
+
+</html>
