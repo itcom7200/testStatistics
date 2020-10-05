@@ -46,10 +46,22 @@
      padding-top: 3rem;
  }
 
+ /* #userSpan {
+     background: red;
+ } */
 
- @media screen and (max-width:576px) {
+ @media screen and (min-width:0px) and (max-width:576px) {
      .btn-xs-block {
          width: 100%;
          display: block;
+     }
+     #userSpan {
+         display: none;
+     }
+ }
+
+ @media screen and (min-width:577px) and (max-width:992px) {
+     #userSpan {
+         display: none;
      }
  }

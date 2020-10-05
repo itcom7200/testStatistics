@@ -49,8 +49,8 @@ if (empty($_SESSION['user'])) {
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                <span class="navbar-text px-2 text-success">
-                   <?php echo $_SESSION['user']; ?>
+                <span id="userSpan" class="navbar-text px-5 text-success">
+                  <?php echo $_SESSION['user']; ?>
                 </span>
                 <a class="btn btn-danger my-2 my-sm-0" href="logout.php">Log Out</a>
                 <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
