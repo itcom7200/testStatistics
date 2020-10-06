@@ -1,1 +1,10 @@
-'{}' 
+{
+    "name": "uns_ct/test-responsive",
+    "authors": [
+        {
+            "name": "suntiparb",
+            "email": "itcom7200@hotmail.com"
+        }
+    ],
+    "require": {}
+}
