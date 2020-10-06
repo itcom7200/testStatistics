@@ -1,8 +1,17 @@
 <?php
 session_start();
+
+include "connection.php";
+
 if (empty($_SESSION['user'])) {
     header('location: login.html');
 }
+
+
+$stmt = $conn->query("SELECT * FROM filecsv");
+$stmt->execute();
+$result = $stmt->fetchAll();
+// $result = $stmt->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -54,8 +63,8 @@ if (empty($_SESSION['user'])) {
                 </span>
                 <a class="btn btn-danger my-2 my-sm-0" href="logout.php">Log Out</a>
                 <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-                
-                
+
+
                 <!-- <a id="logOut" class="btn btn-danger my-2 my-sm-0" href="login.html">Log Out</a>  -->
                 <!-- btn-outline-success -->
               </form>
@@ -73,8 +82,56 @@ if (empty($_SESSION['user'])) {
         <div class="row">
             <div class="col-md">
                 <div class="block2">
-                    <img src="https://aoostudio.com/img/blog/What-is-CDNS-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3.png" class="img-fluid" alt="Responsive image">
-                </div>
+                    <!-- <img src="https://aoostudio.com/img/blog/What-is-CDNS-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3.png" class="img-fluid" alt="Responsive image"> -->
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Filename</th>
+                          <th scope="col text-center">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                          foreach($result as $x => $val){
+                            $count = 1;
+                            // echo "<pre>";
+                            // print_r($val);
+                            // echo "</pre>";
+                            
+                            echo "<th scope=\"row\">$count</th>";
+                            echo "<td>".$val['name']."</td>";
+                            echo "<td>".$val['time']."</td>";
+                            echo "<td>".$val['filename']."</td>";
+                            echo '<td><a class="btn btn-danger">ลบ</a></td>';
+                            $count++;
+                          }
+                        ?>
+                        <!-- <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr> -->
+                      </tbody>
+                    </table>
+
+
+                </div> <!-- block 2 -->
 
             </div>
         </div>
