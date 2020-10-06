@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script>
+        // $(document).ready(function () {
+        //     alert("test Ajax");
+        // });
+
+        
+
+        const sendGetRequest = async () => {
+            try {
+                const resp = await axios.get('https://safe-citadel-72313.herokuapp.com/csv/json.php');
+                return resp.data;
+                // console.log(array);
+                // return resp.data;
+            } catch (err) {
+                // Handle Error Here
+                // console.error(err);
+
+                return "Error";
+            }
+        };
+
+        
+        // sendGetRequest();
+        // console.log(array);
+
+        const main = async () => {
+            let result = [];
+            result = await sendGetRequest();
+            await console.log(result);
+        }
+        
+        main();
+        
+
+    </script>
+</body>
+
+</html>
