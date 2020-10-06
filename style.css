@@ -40,6 +40,7 @@
      background-color: #e9ecef;
      padding: .5rem 1rem;
      border-radius: .3rem;
+     height: 100%;
  }
 
  .login-form {

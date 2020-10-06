@@ -90,6 +90,11 @@ var myChart2 = new Chart(ctx2, {
         }]
     },
     options: {
+        legend: {
+            labels: {
+                fontSize: 16 
+            }
+        },
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -104,7 +109,8 @@ var myChart2 = new Chart(ctx2, {
                 {
                     render: 'percentage',
                     // fontColor: ['green', 'white', 'red'],
-                    precision: 2
+                    precision: 2,
+                    fontSize: 16
                 }
             ]
         }
