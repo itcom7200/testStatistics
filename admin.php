@@ -96,17 +96,19 @@ $result = $stmt->fetchAll();
                       <tbody>
                         <?php 
                           foreach($result as $x => $val){
-                            $count = 1;
+                            // $count = 1;
                             // echo "<pre>";
                             // print_r($val);
                             // echo "</pre>";
-                            
-                            echo "<th scope=\"row\">$count</th>";
+                            $x++;
+                            echo "<tr>";
+                            echo "<th scope=\"row\">$x</th>";
                             echo "<td>".$val['name']."</td>";
                             echo "<td>".$val['time']."</td>";
                             echo "<td>".$val['filename']."</td>";
                             echo '<td><a class="btn btn-danger">ลบ</a></td>';
-                            $count++;
+                            echo "</tr>";
+                            // $count++;
                           }
                         ?>
                         <!-- <tr>
