@@ -21,7 +21,7 @@
                     <h2>text-hear</h2>
                 </div>
 
-                <form action="file_upload.php" class="shadow p-3 bg-white">
+                <form action="file_upload.php" method="POST" class="shadow p-3 bg-white" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Enter Filename: </label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter File Name" required> 
@@ -29,7 +29,7 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Example file input</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="filename">
+                        <input type="file" class="form-control-file" id="fileName" name="file" required>
                     </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg btn-xs-block">Submit</button>

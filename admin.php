@@ -88,8 +88,8 @@ $result = $stmt->fetchAll();
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
-                          <th scope="col">Time</th>
-                          <th scope="col">Filename</th>
+                          <!-- <th scope="col">Time</th> -->
+                          <!-- <th scope="col">Filename</th> -->
                           <th scope="col text-center">Delete</th>
                         </tr>
                       </thead>
@@ -104,8 +104,8 @@ $result = $stmt->fetchAll();
                             echo "<tr>";
                             echo "<th scope=\"row\">$x</th>";
                             echo "<td>".$val['name']."</td>";
-                            echo "<td>".$val['time']."</td>";
-                            echo "<td>".$val['filename']."</td>";
+                            // echo "<td>".$val['time']."</td>";
+                            // echo "<td>".$val['filename']."</td>";
                             echo '<td><a class="btn btn-danger">ลบ</a></td>';
                             echo "</tr>";
                             // $count++;
