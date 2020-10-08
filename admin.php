@@ -89,7 +89,7 @@ $result = $stmt->fetchAll();
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <!-- <th scope="col">Time</th> -->
-                          <!-- <th scope="col">Filename</th> -->
+                          <th scope="col">Filename</th>
                           <th scope="col text-center">Delete</th>
                         </tr>
                       </thead>
@@ -100,13 +100,17 @@ $result = $stmt->fetchAll();
                             // echo "<pre>";
                             // print_r($val);
                             // echo "</pre>";
+                            $id = $val["id"];
+                            // echo $id."<br>";
+
                             $x++;
                             echo "<tr>";
                             echo "<th scope=\"row\">$x</th>";
                             echo "<td>".$val['name']."</td>";
                             // echo "<td>".$val['time']."</td>";
-                            // echo "<td>".$val['filename']."</td>";
-                            echo '<td><a class="btn btn-danger">ลบ</a></td>';
+                            echo "<td>upload_file/".$val['filename']."</td>";
+                            echo '<td><a class="btn btn-danger"
+                            href="del_file.php?id='.$id.'&filepath='.$val['filename'].'" target="_blank">ลบ</a></td>';
                             echo "</tr>";
                             // $count++;
                           }

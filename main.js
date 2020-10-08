@@ -2,10 +2,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["08-09.59","10-11.59","12-13.59","14-15.59","16-18.59"],
+        labels: ["08-09.59","10-11.59","12-13.59","14-15.59","16-17.59"],
         datasets: [{
             // label: '# of Votes',
-            data: [64, 182, 336, 183, 245, 89, 123, 56],
+            data: [64, 182, 336, 183, 245],
             backgroundColor: [
                 // "#F7464A",
                 // "#F7464A",
@@ -92,7 +92,7 @@ var myChart2 = new Chart(ctx2, {
     options: {
         legend: {
             labels: {
-                fontSize: 16 
+                // fontSize: 16 
             }
         },
         responsive: true,
@@ -109,8 +109,8 @@ var myChart2 = new Chart(ctx2, {
                 {
                     render: 'percentage',
                     // fontColor: ['green', 'white', 'red'],
-                    precision: 2,
-                    fontSize: 16
+                    // precision: 2
+                    // fontSize: 16
                 }
             ]
         }

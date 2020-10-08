@@ -1,27 +1,18 @@
 <?php
 
-$dir_folder = "upload_file";
+
 /*
 echo "<pre>";
 print_r($_FILES["file"]["name"]);
-echo "</pre>"; */
+echo "</pre>"; 
+*/
 
 $randomName = md5(uniqid(mt_rand(), true)).".csv";
-echo "randomName => ".$randomName."<br>";
+$tmpFile = $_FILES['file']['tmp_name'];
+$destination = "upload_file/$randomName";
 
+move_uploaded_file($tmpFile,$destination);
 
-$postName = $_POST['name'];
-$filename = $_FILES['file']['tmp_name'];
-$destination = "$dir_folder/$randomName";
-
-echo "postName => ".$postName."<br>";
-echo "filename => ".$filename."<br>";
-echo "destinations => ".$destination."<br>";
-echo "result =>";
-
-$result = move_uploaded_file($filename,$destination);
-print_r($result);
-// echo $_POST['name'];
 
 
 // $result = checkError($tester);
@@ -36,16 +27,16 @@ print_r($result);
 //     echo "Stored in: " . $_FILES["file"]["tmp_name"];
 // }
 
-/*
+
 include 'connection.php';
 
 $stmt = $conn->prepare("INSERT INTO filecsv (name, filename) value (:name, :filename)");
-$stmt->bindParam(':name', $name);
-$stmt->bindParam(':filename', $filename);
+$stmt->bindParam(':name', $_POST['name']);
+$stmt->bindParam(':filename', $randomName);
 
 print_r($stmt);
 $stmt->execute();
 
 $conn = null;
 
-header("location: form.html");  */
+// header("location: form.html");
