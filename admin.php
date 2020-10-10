@@ -7,7 +7,6 @@ if (empty($_SESSION['user'])) {
     header('location: login.html');
 }
 
-
 $stmt = $conn->query("SELECT * FROM filecsv");
 $stmt->execute();
 $result = $stmt->fetchAll();
@@ -23,6 +22,7 @@ $result = $stmt->fetchAll();
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -82,8 +82,7 @@ $result = $stmt->fetchAll();
         <div class="row">
             <div class="col-md">
                 <div class="block2">
-                    <!-- <img src="https://aoostudio.com/img/blog/What-is-CDNS-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3.png" class="img-fluid" alt="Responsive image"> -->
-                    <table class="table">
+                    <table class="table" id="myTable">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -94,25 +93,30 @@ $result = $stmt->fetchAll();
                         </tr>
                       </thead>
                       <tbody>
-                        <?php 
-                          foreach($result as $x => $val){
-                            // $count = 1;
-                            // echo "<pre>";
-                            // print_r($val);
-                            // echo "</pre>";
-                            $id = $val["id"];
-                            // echo $id."<br>";
+                        <?php
+                          foreach ($result as $x => $val) {
+                              // $count = 1;
+                              // echo "<pre>";
+                              // print_r($val);
+                              // echo "</pre>";
+                              $id = $val["id"];
+                              // echo $id."<br>";
+                              $file = $val['name'];
+                              $filename = $val['filename'];
 
-                            $x++;
-                            echo "<tr>";
-                            echo "<th scope=\"row\">$x</th>";
-                            echo "<td>".$val['name']."</td>";
-                            // echo "<td>".$val['time']."</td>";
-                            echo "<td>upload_file/".$val['filename']."</td>";
-                            echo '<td><a class="btn btn-danger"
-                            href="del_file.php?id='.$id.'&filepath='.$val['filename'].'" target="_blank">ลบ</a></td>';
-                            echo "</tr>";
-                            // $count++;
+                              $link = "<td><a href='record.php?filePath=$filename'>$file</a></td>";
+
+                              $x++;
+                              echo "<tr>";
+                              echo "<th scope=\"row\">$x</th>";
+                              // echo "<td><a href=\"record.php\">".$val['name']."</a></td>";
+                              echo $link;
+                              // echo "<td>".$val['time']."</td>";
+                              echo "<td>upload_file/" . $val['filename'] . "</td>";
+                              echo '<td><a class="btn btn-danger"
+                                                      href="del_file.php?id=' . $id . '&filepath=' . $val['filename'] . '" target="_blank">ลบ</a></td>';
+                              echo "</tr>";
+                              // $count++;
                           }
                         ?>
                         <!-- <tr>
@@ -155,12 +159,14 @@ $result = $stmt->fetchAll();
         crossorigin="anonymous"></script>
     <!-- bootstrap4 cdn -->
 
-    <script>
-        // $(document).ready(function(){
-        //     $("#logOut").click(function(){
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <!-- datatable cdn -->
 
-        //     });
-        // });
+    <script>
+      $(document).ready( function(){
+        $('#myTable').DataTable();
+      });
+
 
     </script>
 

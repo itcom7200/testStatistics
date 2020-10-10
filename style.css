@@ -46,6 +46,10 @@
  .login-form {
      padding-top: 3rem;
  }
+.row-100{
+    height: 100vh;
+}
+ 
 
  /* #userSpan {
      background: red;
