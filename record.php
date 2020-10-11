@@ -2,6 +2,9 @@
 
 session_start();
 
+if(empty($_GET['filePath'])){
+    header("location: admin.php");
+}
 
 $filePath = $_GET['filePath'];
 $dir = "upload_file/$filePath";
@@ -21,6 +24,15 @@ while (!feof($file)) {
 }
 fclose($file);
 
+include "connection.php";
+
+$stmt = $conn->prepare('SELECT * FROM filecsv where id = :id');
+$stmt->bindParam(":id",$_GET['id']);
+$stmt->execute();
+$result = $stmt->fetchAll();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -35,10 +47,17 @@ fclose($file);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        *{
+            font-family: 'Sarabun', sans-serif;
+        }
+    </style> -->
 </head>
 <body>
-<div class="header">
+    <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Admin Module </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,25 +67,25 @@ fclose($file);
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="admin.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="form.php">Form</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    View Data
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Bar Chart</a>
+                    <a class="dropdown-item" href="#">Dough-nut</a>
+                    <!-- <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a> -->
                   </div>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+                </li> -->
               </ul>
               <form class="form-inline my-2 my-lg-0">
                 <span id="userSpan" class="navbar-text px-5 text-success">
@@ -90,9 +109,9 @@ fclose($file);
     </div>
 
     <div class="container pt-4">
-        <div class="row">
-            <div class="col-md">
-            <div class="block2 text-center shadow p-3 bg-white rounded">
+        <div class="row shadow p-3 bg-white rounded">
+            <div id="chart" class="col-md">
+                <div class="text-center">
                     <h2>Timeline</h2>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
@@ -104,7 +123,53 @@ fclose($file);
                 </div>
                 
             </div>
+            <div id="metadata" class="col-md mx-4">
+                <div class="text-center mb-4">
+                    <h2>Infomations</h2>
+                </div>
+
+                <!-- <div class="info">
+                    <div class="row">
+                        <div class="col-12 col-md-6 my-2">
+                            <button class="btn btn-primary btn-block active" disabled="disabled">
+                                <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                                Active
+                            </button>   
+                        </div>
+                        <div class="col-12 col-md-6 my-2">
+                            <button class="btn btn-danger btn-block">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>  -->
+
+                <div class="test">
+                    <?php 
+                        // echo "id = ".$_GET['id']."<br>";
+                        // echo "<pre>";
+                        // print_r($result);
+                        // echo "</pre>";
+                        
+                        // echo date("d/m/Y h:i:sa", $date);
+
+                        // echo date("Y-m-d h:i:sa", $result[0]['time']);
+                    ?>
+                </div>
+
+                <ul class="mt-2 p-0">
+                    <?php 
+                        $date = strtotime($result[0]['time']);
+                    ?>
+                    <li><h6>ชื่อไฟล์ : <?php echo $result[0]['name']; ?></h6></li>
+                    <li><h6>อัพโหลด : <?php echo date("d/m/Y ", $date); ?></h6></li>
+                    <li><h6>เวลา : <?php echo date("h: i: s a ", $date); ?></h6></li>
+                    
+                </ul>
+            </div>  <!-- .metadata -->
         </div>
+        
     </div>
 
     <!-- <div class="container">

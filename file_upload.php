@@ -36,7 +36,13 @@ $stmt->bindParam(':filename', $randomName);
 
 print_r($stmt);
 $stmt->execute();
+$last_id = $conn->lastInsertId();
 
 $conn = null;
 
-// header("location: form.html");
+echo "<br/><br/>";
+$header = "location: form.php?insId=".$last_id;
+// echo $header;
+
+
+header($header);
