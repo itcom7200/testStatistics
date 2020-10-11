@@ -115,14 +115,14 @@
                                 </div>';
                         
 
-                        $div2 = '<div class="col-8">
+                        $div2 = '<div class="col-6">
                                     <a href="record.php?id='.$val["id"].'&filePath='.$val['filename'].'">
                                         '.$val["name"].'
                                     </a>
                                 </div>';
                                 // '.$val["name"].'
 
-                        $div3 = '<div class="col-2">
+                        $div3 = '<div class="col-4">
                                     '.date("d/m/Y ", $date).'
                                 </div>';
 
