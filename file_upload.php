@@ -1,6 +1,6 @@
 <?php
 
-
+    $chart_type = $_POST['chart'];
 /*
 echo "<pre>";
 print_r($_FILES["file"]["name"]);
@@ -46,3 +46,4 @@ $header = "location: form.php?insId=".$last_id;
 
 
 header($header);
+?>

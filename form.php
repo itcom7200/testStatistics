@@ -118,10 +118,10 @@
                             placeholder="Enter File Name" required>
                             <small class="form-text text-muted">ตัวอย่างชื่อไฟล์เช่น เช่น "ข้อมูลเดือนตุลาคม 63"</small>
                         </div>
-                        <select class="form-control" id="chart" require>
+                        <select class="form-control" id="chart" name="chart" require>
                           <option disabled selected="selected">Select Chart Type</option>
-                          <option value="">Bar Chart</option>
-                          <option value="">Dough-nut Chart</option>
+                          <option value="bar">Bar Chart</option>
+                          <option value="doughnut">Dough-nut Chart</option>
                         </select>
                         <br>
                         <div class="form-group">
