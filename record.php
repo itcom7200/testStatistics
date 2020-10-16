@@ -123,12 +123,12 @@ $result = $stmt->fetchAll();
                 </div>
                 
             </div>
-            <div id="metadata" class="col-md mx-4">
+            <div id="info" class="col-md mx-4">
                 <div class="text-center mb-4">
                     <h2>Infomations</h2>
                 </div>
 
-                <!-- <div class="info">
+                <div class="info">
                     <div class="row">
                         <div class="col-12 col-md-6 my-2">
                             <button class="btn btn-primary btn-block active" disabled="disabled">
@@ -143,7 +143,7 @@ $result = $stmt->fetchAll();
                             </button>
                         </div>
                     </div>
-                </div>  -->
+                </div> 
 
                 <div class="test">
                     <?php 

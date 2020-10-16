@@ -1,6 +1,17 @@
 <?php
 
-    $chart_type = $_POST['chart'];
+$chart_type = null;
+
+// echo $_POST['chart']."<br/>";
+
+if($_POST['chart'] === "bar"){
+    $chart_type = 1;
+} else {
+    $chart_type = 2;
+}
+
+// echo "chart -> ".$chart_type;
+
 /*
 echo "<pre>";
 print_r($_FILES["file"]["name"]);
@@ -14,25 +25,12 @@ $destination = "upload_file/$randomName";
 move_uploaded_file($tmpFile,$destination);
 
 
-
-// $result = checkError($tester);
-// echo $result;
-
-// if ($_FILES["file"]["error"] > 0) {
-//     echo "Error: " . $_FILES["file"]["error"] . "<br>";
-// } else {
-//     echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-//     echo "Type: " . $_FILES["file"]["type"] . "<br>";
-//     echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-//     echo "Stored in: " . $_FILES["file"]["tmp_name"];
-// }
-
-
 include 'connection.php';
 
-$stmt = $conn->prepare("INSERT INTO filecsv (name, filename) value (:name, :filename)");
+$stmt = $conn->prepare("INSERT INTO filecsv (name, filename, type) value (:name, :filename, :type)");
 $stmt->bindParam(':name', $_POST['name']);
 $stmt->bindParam(':filename', $randomName);
+$stmt->bindParam(':type', $chart_type);
 
 print_r($stmt);
 $stmt->execute();
@@ -42,6 +40,7 @@ $conn = null;
 
 echo "<br/><br/>";
 $header = "location: form.php?insId=".$last_id;
+
 // echo $header;
 
 
