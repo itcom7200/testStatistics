@@ -45,4 +45,5 @@ $header = "location: form.php?insId=".$last_id;
 
 
 header($header);
+
 ?>

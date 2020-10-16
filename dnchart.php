@@ -1,19 +1,12 @@
-<?php
+<?php 
+    session_start();
 
-use function PHPSTORM_META\type;
+    include "connection.php";
+    $stmt = $conn->query('SELECT * FROM filecsv WHERE type = 2');
+    $stmt->execute();
+    $result = $stmt->fetchAll();
 
-session_start();
 
-include "connection.php";
-
-if (empty($_SESSION['user'])) {
-    header('location: login.html');
-}
-
-$stmt = $conn->query("SELECT * FROM filecsv");
-$stmt->execute();
-$result = $stmt->fetchAll();
-// $result = $stmt->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -25,14 +18,17 @@ $result = $stmt->fetchAll();
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="http://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"> -->
-    <link rel="stylesheet" href="jquery.dataTables.min.css">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
     <!-- Font -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Admin Module </a>
@@ -53,7 +49,7 @@ $result = $stmt->fetchAll();
                     View Data
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="barchart.php">Bar Chart</a>
+                    <a class="dropdown-item" href="#">Bar Chart</a>
                     <a class="dropdown-item" href="#">Dough-nut</a>
                     <!-- <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a> -->
@@ -84,85 +80,79 @@ $result = $stmt->fetchAll();
           </nav>
     </div>
 
+    
     <div class="container pt-4">
-        <div class="row">
-            <div class="col-md">
-                <div class="block2">
-                    <table class="table" id="myTable">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Type</th>
-                          <!-- <th scope="col">Time</th> -->
-                          <th scope="col">Upload Time</th>
-                          <th scope="col text-center">Delete</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                          foreach ($result as $x => $val) {
-                              // $count = 1;
-                              // echo "<pre>";
-                              // print_r($val);
-                              // echo "</pre>";
-                              $id = $val["id"];
-                              // echo $id."<br>";
-                              $file = $val['name'];
-                              $filename = $val['filename'];
-                              $date = strtotime($val['time']);
+        <div class="content-space mx-1">
+            <div class="header-content px-3">
+                <div class="row">
+                    <div class="col-md p-0">
+                        <div class="text-center rounded-top bg-secondary p-4">  
+                            <h2 class="my-0"> 
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i> 
+                                Dough-nut Chart
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrap shadow p-3 bg-white">
+                <?php 
 
-                              if($val["type"] == 1){
-                                $type = "Bar Chart";
-                              } else $type = "Dough Nut Chart";
+                    foreach($result as $key => $val){
+                        
+                        // echo "<pre>";
+                        // print_r($val);
+                        // echo "</pre>";
 
+                        $key++;
+                        $date = strtotime($val['time']);
+                        // echo $date."<br>";
 
+                        // echo $val["name"];
+                        
+                        $div1 = '<div class="col-2">
+                                    '.$key.'
+                                </div>';
+                        
 
-                              $link = "<td><a href='record.php?id=$id&filePath=$filename'>$file</a></td>";
+                        $div2 = '<div class="col-6">
+                                    <a href="record.php?id='.$val["id"].'&filePath='.$val['filename'].'">
+                                        '.$val["name"].'
+                                    </a>
+                                </div>';
+                                // '.$val["name"].'
 
-                              $x++;
-                              echo "<tr>";
-                              echo "<th scope=\"row\">$x</th>";
-                              // echo "<td><a href=\"record.php\">".$val['name']."</a></td>";
-                              echo $link;
-                              echo "<td>".$type."</td>";
-                              echo "<td>".date("d/m/Y ",$date)."</td>";
-                              echo '<td><a class="btn btn-danger"
-                                      href="del_file.php?id=' . $id . '&filepath=' . $val['filename'] . '" target="_blank">ลบ</a>
-                                    </td>';
-                              echo "</tr>";
-                              // $count++;
-                          }
-                        ?>
-                        <!-- <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr> -->
-                      </tbody>
-                    </table>
+                        $div3 = '<div class="col-4">
+                                    '.date("d/m/Y ", $date).'
+                                </div>';
 
 
-                </div> <!-- block 2 -->
+                        echo '<div class="row p-2">';
+                        // echo $val['id']."<br>";
+                        // echo $val['filename']."<br>";
+                        echo $div1;
+                        echo $div2;
+                        echo $div3;
+                        echo '</div>';
+
+                    }
+                ?>
+                <!-- <div class="row">
+                    <div class="col-2">
+                        1
+                    </div>
+                    <div class="col-8 bg-dark" style="height: 200px;">
+                        name
+                    </div>
+                    <div class="col-2 bg-light">
+                        data
+                    </div>
+                </div> /div.row -->
 
             </div>
         </div>
     </div>
-
-
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -173,17 +163,6 @@ $result = $stmt->fetchAll();
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <!-- bootstrap4 cdn -->
-
-    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <!-- datatable cdn -->
-
-    <script>
-      $(document).ready( function(){
-        $('#myTable').DataTable();
-      });
-
-
-    </script>
-
+    
 </body>
 </html>

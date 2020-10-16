@@ -2,7 +2,7 @@
     session_start();
 
     include "connection.php";
-    $stmt = $conn->query('SELECT * FROM filecsv');
+    $stmt = $conn->query('SELECT * FROM filecsv WHERE type = 1');
     $stmt->execute();
     $result = $stmt->fetchAll();
 
@@ -88,7 +88,7 @@
                     <div class="col-md p-0">
                         <div class="text-center rounded-top bg-secondary p-4">  
                             <h2 class="my-0"> 
-                                <i class="fa fa-pie-chart" aria-hidden="true"></i> 
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i> 
                                 Bar Chart
                             </h2>
                         </div>
