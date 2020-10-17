@@ -31,8 +31,10 @@ $stmt = $conn->prepare('DELETE from filecsv where id = :id');
 $stmt->bindParam(':id', $_GET['id']);
 $result = $stmt->execute();
 echo "result query = ".$result;
+$id = $_GET['id'];
 }
 
+header("location: admin.php?id=$id");
 
 //ลบไฟล์ได้แล้ว
 

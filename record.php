@@ -2,11 +2,26 @@
 
 session_start();
 
-if (empty($_GET['filePath'])) {
-    header("location: admin.php");
+if(empty($_GET['alert'])){
+    $_GET['alert'] = "false";
 }
 
-$filePath = $_GET['filePath'];
+include "connection.php";
+
+$stmt = $conn->prepare('SELECT * FROM filecsv where id = :id');
+$stmt->bindParam(":id", $_GET['id']);
+$stmt->execute();
+$result = $stmt->fetchAll();
+
+$alert = null;
+
+if($_GET['alert'] === "true"){
+    $alert = $result[0]["name"];
+}
+
+$template_Alert = '<div class="alert alert-success" role="alert">'.$alert.' ใช้เป็นไฟล์หลักแล้ว</div>';
+
+$filePath = $result[0]['filename'];
 $dir = "upload_file/$filePath";
 // echo $dir;
 
@@ -29,16 +44,11 @@ while (!feof($file)) {
 }
 fclose($file);
 
-include "connection.php";
-
-$stmt = $conn->prepare('SELECT * FROM filecsv where id = :id');
-$stmt->bindParam(":id", $_GET['id']);
-$stmt->execute();
-$result = $stmt->fetchAll();
-
 // echo $result[0]["type"];
 
 $chartType =  $result[0]["type"];
+$idFile = $result[0]["id"];
+// echo $idFile."<br>";
 
 switch ($chartType) {
     case 1: // bar
@@ -151,7 +161,21 @@ switch ($chartType) {
 
     <div class="container pt-4">
         <div class="row shadow p-3 bg-white rounded">
+
+            <div class="col-md-12">
+                <?php 
+
+                if($_GET['alert'] === "true"){
+                    echo $template_Alert;
+                }
+                    
+                ?>
+            </div>
+
             <div id="chart" class="col-md">
+
+                
+
                 <div class="text-center">
                     <h2>Timeline</h2>
                     <div class="chart-container">
@@ -180,10 +204,13 @@ switch ($chartType) {
                 <div class="info">
                     <div class="row">
                         <div class="col-12 col-md-6 my-2">
-                            <button class="btn btn-primary btn-block active" disabled="disabled">
-                                <i class="fa fa-check fa-lg" aria-hidden="true"></i>
-                                Active
-                            </button>
+                            <?php
+                                echo '<a class="btn btn-primary btn-block active"
+                                    href="maincsv.php?id='.$idFile.'&filetype='.$chartType.'"> <!-- disabled="disabled" -->
+                                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                                        Active
+                                    </a>';
+                            ?>
                         </div>
                         <div class="col-12 col-md-6 my-2">
                             <button class="btn btn-danger btn-block">

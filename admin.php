@@ -15,6 +15,9 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 // $result = $stmt->fetchAll();
 
+$alert = "ได้ลบแล้ว"; //
+$template_Alert = '<div class="alert alert-success" role="alert">'.$alert.'</div>';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,6 +90,12 @@ $result = $stmt->fetchAll();
     <div class="container pt-4">
         <div class="row">
             <div class="col-md">
+              
+              <?php 
+                echo $template_Alert;
+              ?>
+
+
                 <div class="block2">
                     <table class="table" id="myTable">
                       <thead>
@@ -113,12 +122,12 @@ $result = $stmt->fetchAll();
                               $date = strtotime($val['time']);
 
                               if($val["type"] == 1){
-                                $type = "Bar Chart";
-                              } else $type = "Dough Nut Chart";
+                                $type = "Bar";
+                              } else $type = "Dough nut";
 
 
 
-                              $link = "<td><a href='record.php?id=$id&filePath=$filename'>$file</a></td>";
+                              $link = "<td><a href='record.php?id=$id'>$file</a></td>";
 
                               $x++;
                               echo "<tr>";
