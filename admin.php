@@ -15,7 +15,13 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 // $result = $stmt->fetchAll();
 
-$alert = "ได้ลบแล้ว"; //
+if(empty($_GET['id'])){
+  $_GET['id'] = null;
+}
+
+$deleteId = $_GET['id'];
+
+$alert = "ID: $deleteId ได้ลบแล้ว";//
 $template_Alert = '<div class="alert alert-success" role="alert">'.$alert.'</div>';
 
 ?>
@@ -92,7 +98,9 @@ $template_Alert = '<div class="alert alert-success" role="alert">'.$alert.'</div
             <div class="col-md">
               
               <?php 
-                echo $template_Alert;
+                if(!empty($_GET['id'])){
+                  echo $template_Alert;
+                }
               ?>
 
 
