@@ -7,7 +7,7 @@ session_start();
 include "connection.php";
 
 if (empty($_SESSION['user'])) {
-    header('location: login.html');
+    header('location: login.php');
 }
 
 $stmt = $conn->query("SELECT * FROM filecsv");
