@@ -16,4 +16,4 @@ if ($username === "admin" && $password === "B39CHPA") {
     header('location: admin.php');
 }
 //else echo "faild"; //header location login.html
-else header('location: login.html');
+else header('location: login.php');

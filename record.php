@@ -2,7 +2,7 @@
 
 session_start();
 
-if(empty($_GET['alert'])){
+if (empty($_GET['alert'])) {
     $_GET['alert'] = "false";
 }
 
@@ -15,11 +15,11 @@ $result = $stmt->fetchAll();
 
 $alert = null;
 
-if($_GET['alert'] === "true"){
+if ($_GET['alert'] === "true") {
     $alert = $result[0]["name"];
 }
 
-$template_Alert = '<div class="alert alert-success" role="alert">'.$alert.' ใช้เป็นไฟล์หลักแล้ว</div>';
+$template_Alert = '<div class="alert alert-success" role="alert">' . $alert . ' ใช้เป็นไฟล์หลักแล้ว</div>';
 
 $filePath = $result[0]['filename'];
 $dir = "upload_file/$filePath";
@@ -31,7 +31,7 @@ $file = fopen($dir, "r");
 while (!feof($file)) {
 
     $value = (fgetcsv($file));
-    
+
     // echo "<pre>";
     // print_r($value);
     // echo "</pre>";
@@ -71,7 +71,7 @@ switch ($chartType) {
             "rgba(255, 99, 132, 1)"
             
         ]';
-    break;
+        break;
     default: //2 doughnut
         $typeChart = "'doughnut'";
         $backgroundChart = 'backgroundColor: [
@@ -110,7 +110,7 @@ switch ($chartType) {
 <body>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Admin Module </a>
+            <a class="navbar-brand" href="admin.php">Admin Module </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -128,8 +128,8 @@ switch ($chartType) {
                             View Data
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Bar Chart</a>
-                            <a class="dropdown-item" href="#">Dough-nut</a>
+                            <a class="dropdown-item" href="barchart.php">Bar Chart</a>
+                            <a class="dropdown-item" href="dnchart.php">Dough-nut</a>
                             <!-- <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a> -->
                         </div>
@@ -163,31 +163,31 @@ switch ($chartType) {
         <div class="row shadow p-3 bg-white rounded">
 
             <div class="col-md-12">
-                <?php 
+                <?php
 
-                if($_GET['alert'] === "true"){
+                if ($_GET['alert'] === "true") {
                     echo $template_Alert;
                 }
-                    
+
                 ?>
             </div>
 
             <div id="chart" class="col-md">
 
-                
+
 
                 <div class="text-center">
                     <h2>Timeline</h2>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>
-                    <?php 
-                        if($chartType == 1){
-                            echo "<ul>
+                    <?php
+                    if ($chartType == 1) {
+                        echo "<ul>
                                     <li>นักศึกษา 1226 คน</li>
                                      <li>บุคลากร: 15 คน</li>
                                 </ul>";
-                        }
+                    }
                     ?>
                     <!-- <ul>
                         <li>นักศึกษา 1226 คน</li>
@@ -205,8 +205,8 @@ switch ($chartType) {
                     <div class="row">
                         <div class="col-12 col-md-6 my-2">
                             <?php
-                                echo '<a class="btn btn-primary btn-block active"
-                                    href="maincsv.php?id='.$idFile.'&filetype='.$chartType.'"> <!-- disabled="disabled" -->
+                            echo '<a class="btn btn-primary btn-block active"
+                                    href="maincsv.php?id=' . $idFile . '&filetype=' . $chartType . '"> <!-- disabled="disabled" -->
                                     <i class="fa fa-check fa-lg" aria-hidden="true"></i>
                                         Active
                                     </a>';
@@ -281,7 +281,7 @@ switch ($chartType) {
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: <?php
-                        echo $typeChart;
+                    echo $typeChart;
                     ?>,
             data: {
                 labels: [
@@ -309,7 +309,7 @@ switch ($chartType) {
                     //     "rgba(255, 99, 132, 0.2)",
                     //     "rgba(255, 99, 132, 0.2)",
                     //     "rgba(255, 99, 132, 0.2)"
-                        
+
                     // ],
                     // borderColor: [
                     //     "rgba(255, 99, 132, 1)",
@@ -318,12 +318,11 @@ switch ($chartType) {
                     //     "rgba(255, 99, 132, 1)",
                     //     "rgba(255, 99, 132, 1)",
                     //     "rgba(255, 99, 132, 1)"
-                        
+
                     // ]
-                    <?php 
-                        echo $backgroundChart;
-                    ?>
-                    ,
+                    <?php
+                    echo $backgroundChart;
+                    ?>,
                     borderWidth: 1
                 }]
             },
@@ -345,9 +344,9 @@ switch ($chartType) {
                 // legend: {
                 //     display: false
                 // }
-                <?php 
-                    if($chartType == 1){
-                        echo "scales: {
+                <?php
+                if ($chartType == 1) {
+                    echo "scales: {
                             yAxes: [{
                                 ticks: {
                                     beginAtZero: true
@@ -364,8 +363,8 @@ switch ($chartType) {
                         legend: {
                             display: false
                         }";
-                    } else {
-                        echo "legend: {
+                } else {
+                    echo "legend: {
                             labels: {
                                 // fontSize: 16 
                             }
@@ -389,7 +388,7 @@ switch ($chartType) {
                                 }
                             ]
                         }";
-                    }
+                }
                 ?>
             }
         });

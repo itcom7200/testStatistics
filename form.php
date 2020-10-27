@@ -1,22 +1,22 @@
 <?php
-    session_start();
+session_start();
 
-    $template_Alert = null;
-    include "connection.php";
+$template_Alert = null;
+include "connection.php";
 
-    if(!empty($_GET['insId'])){
-        // $test = "ins id eiei";
-        $stmt = $conn->prepare("SELECT * FROM filecsv where id = :id");
-        $stmt->bindParam(":id", $_GET["insId"]);
+if (!empty($_GET['insId'])) {
+    // $test = "ins id eiei";
+    $stmt = $conn->prepare("SELECT * FROM filecsv where id = :id");
+    $stmt->bindParam(":id", $_GET["insId"]);
 
-        $stmt->execute();
-        $result = $stmt->fetchAll();
+    $stmt->execute();
+    $result = $stmt->fetchAll();
 
-        $lastInsName = $result[0]["name"];
-        $alert = "เพิ่มข้อมูล \"$lastInsName\" เรียบร้อยแล้ว";
+    $lastInsName = $result[0]["name"];
+    $alert = "เพิ่มข้อมูล \"$lastInsName\" เรียบร้อยแล้ว";
 
-        $template_Alert = '<div class="alert alert-success" role="alert">'.$alert.'</div>';
-    }
+    $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '</div>';
+}
 
 ?>
 
@@ -29,12 +29,11 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
-    
-    
+
+
     <link rel="stylesheet" href="style.css">
     <!-- <style>
         
@@ -44,9 +43,8 @@
 <body>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Admin Module </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="admin.php">Admin Module </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -59,13 +57,12 @@
                         <a class="nav-link" href="form.php">Form</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             View Data
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Bar Chart</a>
-                            <a class="dropdown-item" href="#">Dough-nut</a>
+                            <a class="dropdown-item" href="barchart.php">Bar Chart</a>
+                            <a class="dropdown-item" href="dnchart.php">Dough-nut</a>
                             <!-- <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a> -->
                         </div>
@@ -98,11 +95,11 @@
     <div class="container pt-4">
         <div class="row">
             <div class="col-md">
-                
-                <?php if(!empty($template_Alert)){
+
+                <?php if (!empty($template_Alert)) {
                     echo $template_Alert;
                     $_GET['insId'] = null;
-                    }
+                }
                 ?>
 
                 <div class="form-wrap">
@@ -114,14 +111,13 @@
                     <form action="file_upload.php" method="POST" class="shadow p-3 bg-white" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Enter Filename: </label>
-                            <input type="text" class="form-control" id="name" name="name" 
-                            placeholder="Enter File Name" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter File Name" required>
                             <small class="form-text text-muted">ตัวอย่างชื่อไฟล์เช่น เช่น "ข้อมูลเดือนตุลาคม 63"</small>
                         </div>
                         <select class="form-control" id="chart" name="chart" required>
-                          <option disabled>Select Chart Type</option>
-                          <option value="bar" selected="selected">Bar Chart</option>
-                          <option value="doughnut">Dough-nut Chart</option>
+                            <option disabled>Select Chart Type</option>
+                            <option value="bar" selected="selected">Bar Chart</option>
+                            <option value="doughnut">Dough-nut Chart</option>
                         </select>
                         <br>
                         <div class="form-group">
@@ -134,8 +130,8 @@
                         </div>
                     </form>
                 </div>
-                
-                
+
+
 
 
             </div>
@@ -143,15 +139,9 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <!-- bootstrap4 cdn -->
 
 
