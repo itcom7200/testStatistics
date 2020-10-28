@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 session_start();
 
 include "connection.php";
@@ -13,7 +11,14 @@ if (empty($_SESSION['user'])) {
 $stmt = $conn->query("SELECT * FROM filecsv");
 $stmt->execute();
 $result = $stmt->fetchAll();
-// $result = $stmt->fetchAll();
+
+$checkMain = $conn->query("SELECT * FROM maincsv");
+$checkMain->execute();
+$resultMain = $checkMain->fetchAll();
+
+$timeline =  $resultMain[0]["idfilecsv"];
+$doughnut =  $resultMain[1]["idfilecsv"];
+
 
 if (empty($_GET['id'])) {
   $_GET['id'] = null;
@@ -104,7 +109,6 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
         }
         ?>
 
-
         <div class="block2">
           <table class="table" id="myTable">
             <thead>
@@ -114,7 +118,7 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                 <th scope="col">Type</th>
                 <!-- <th scope="col">Time</th> -->
                 <th scope="col">Upload Time</th>
-                <th scope="col text-center">Delete</th>
+                <th scope="col text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -145,9 +149,16 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                 echo $link;
                 echo "<td>" . $type . "</td>";
                 echo "<td>" . date("d/m/Y ", $date) . "</td>";
-                echo '<td><a class="btn btn-danger"
-                                      href="del_file.php?id=' . $id . '&filepath=' . $val['filename'] . '" target="_blank">ลบ</a>
-                                    </td>';
+
+                if($id === $timeline || $id === $doughnut ){
+                  echo '<td><a class="btn btn-outline-success active">Active</a></td>';
+                } else {
+                  echo '<td><a class="btn btn-danger"
+                      href="del_file.php?id=' . $id . '&filepath=' . $val['filename'] . '
+                      " target="_blank">Delete</a></td>';
+                }
+
+                
                 echo "</tr>";
                 // $count++;
               }
