@@ -150,15 +150,15 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                 echo "<td>" . $type . "</td>";
                 echo "<td>" . date("d/m/Y ", $date) . "</td>";
 
-                if($id === $timeline || $id === $doughnut ){
-                  echo '<td><a class="btn btn-outline-success active">Active</a></td>';
+                if ($id === $timeline || $id === $doughnut) {
+                  echo '<td><a class="btn btn-outline-success">Active</a></td>';
                 } else {
                   echo '<td><a class="btn btn-danger"
                       href="del_file.php?id=' . $id . '&filepath=' . $val['filename'] . '
                       " target="_blank">Delete</a></td>';
                 }
 
-                
+
                 echo "</tr>";
                 // $count++;
               }
@@ -203,6 +203,9 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
   <script>
     $(document).ready(function() {
       $('#myTable').DataTable();
+      
+
+      // console.log("tester");
     });
   </script>
 
