@@ -37,7 +37,7 @@ $conn = null;
                 <div class="col-md">
                     <div class="jumbotron text-center shadow">
                         <pre>
-                            <?php print_r($result); ?>
+                            <?php // print_r($result); ?>
                         </pre>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ $conn = null;
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <!-- <span id="userSpan" class="navbar-text px-5 text-success">
-                  <?php echo $_SESSION['user']; ?>
+                  <?php // echo $_SESSION['user']; ?>
                 </span> -->
                     <a class="btn btn-primary my-2 my-sm-0" href="login.php">Log In</a>
                     <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
@@ -100,21 +100,22 @@ $conn = null;
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 pb-4">
+            <div class="col-12 col-md-8 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
                     <h2>Timeline</h2>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>
                     <ul>
-                        <li>นักศึกษา 1226 คน</li>
-                        <li>บุคลากร: 15 คน</li>
+                        <li>Lorem, ipsum.</li>
+                        <!-- <li>นักศึกษา 1226 คน</li>
+                        <li>บุคลากร: 15 คน</li> -->
                     </ul>
                 </div>
 
             </div>
 
-            <div class="col-12 col-md-6 pb-4">
+            <div class="col-12 col-md-4 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
                     <h2>Ranking</h2>
                     <div class="chart-container">
@@ -127,20 +128,53 @@ $conn = null;
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-5 pb-2">
+            <div class="col-md-4 pb-2">
                 <div class="table block2 shadow p-3 bg-white rounded">
-                    <table class="table py-4">
+                    
+                    <h2 class="text-center">Ranking 2</h2>
+
+                    <div class="chart-container2">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-8 pb-2">
+                <div class="rcm-book shadow p-3 bg-white rounded table-responsive-xl">
+
+                    <h2 class="text-center">Circulation</h2>
+
+                    <table class="table py-4"> <!-- table-bordered -->
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Mouth</th>
-                                <th scope="col">Week</th>
-                                <th scope="col">Day</th>
+                                <th scope="col">Jan</th>
+                                <th scope="col">Feb</th>
+                                <th scope="col">Mar</th>
+                                <th scope="col">Apr</th>
+                                <th scope="col">May</th>
+                                <th scope="col">Jun</th>
+                                <th scope="col">Jul</th>
+                                <th scope="col">Aug</th>
+                                <th scope="col">Sep</th>
+                                <th scope="col">Oct</th>
+                                <th scope="col">Nov</th>
+                                <th scope="col">Dec</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">Borrow</th>
+                                <td>2380</td>
+                                <td>238</td>
+                                <td>54</td>
+                                <td>238</td>
+                                <td>238</td>
+                                <td>54</td>
+                                <td>238</td>
+                                <td>238</td>
+                                <td>54</td>
                                 <td>238</td>
                                 <td>238</td>
                                 <td>54</td>
@@ -150,9 +184,27 @@ $conn = null;
                                 <td>22</td>
                                 <td>22</td>
                                 <td>0</td>
+                                <td>22</td>
+                                <td>22</td>
+                                <td>0</td>
+                                <td>22</td>
+                                <td>22</td>
+                                <td>0</td>
+                                <td>22</td>
+                                <td>22</td>
+                                <td>0</td>
                             </tr>
                             <tr>
                                 <th scope="row">Return</th>
+                                <td>247</td>
+                                <td>247</td>
+                                <td>53</td>
+                                <td>247</td>
+                                <td>247</td>
+                                <td>53</td>
+                                <td>247</td>
+                                <td>2407</td>
+                                <td>53</td>
                                 <td>247</td>
                                 <td>247</td>
                                 <td>53</td>
@@ -162,68 +214,18 @@ $conn = null;
                                 <td>507</td>
                                 <td>507</td>
                                 <td>107</td>
+                                <td>507</td>
+                                <td>507</td>
+                                <td>107</td>
+                                <td>507</td>
+                                <td>507</td>
+                                <td>107</td>
+                                <td>5007</td>
+                                <td>507</td>
+                                <td>107</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-7 pb-2">
-                <div class="rcm-book shadow p-3 bg-white rounded">
-                    <div class="text-center">
-                        <h4 class="p-2">Book Recommend</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 col-md-3 pb-2">
-                            <div class="card h-100 d-inline-block">
-                                <!-- <div class="card" style="width: 18rem;"></div> -->
-                                <img class="card-img-top" src="89207-fc-a.bmp" alt="Card image cap">
-                                <div class="card-body p-2">
-                                    <p>Rich dad poor dad</p>
-                                    <!-- <h5 class="card-title">Rich dad poor dad</h5> -->
-                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 pb-2">
-                            <div class="card h-100 d-inline-block">
-                                <!-- <div class="card" style="width: 18rem;"></div> -->
-                                <img class="card-img-top" src="88126-fc-a.jpg" alt="Card image cap">
-                                <div class="card-body p-2">
-                                    <p>Omics</p>
-                                    <!-- <h5 class="card-title">Rich dad poor dad</h5> -->
-                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 pb-2">
-                            <div class="card h-100 d-inline-block">
-                                <!-- <div class="card" style="width: 18rem;"></div> -->
-                                <img class="card-img-top" src="88126-fc-a.jpg" alt="Card image cap">
-                                <div class="card-body p-2">
-                                    <p>Omics</p>
-                                    <!-- <h5 class="card-title">Rich dad poor dad</h5> -->
-                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 pb-2">
-                            <div class="card h-100 d-inline-block">
-                                <!-- <div class="card" style="width: 18rem;"></div> -->
-                                <img class="card-img-top img-responsive" src="4588-fc-a.jpg" alt="Card image cap">
-                                <div class="card-body p-2">
-                                    <p>NEUROLOGY</p>
-                                    <!-- <h5 class="card-title">Rich dad poor dad</h5> -->
-                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
             </div>
@@ -275,18 +277,18 @@ $conn = null;
                     ?></p>
                 <!-- <pre>
                     <?php
-                    print_r($resultChart1);
+                    // print_r($resultChart1);
 
-                    foreach ($resultChart1 as $key => $value) {
-                        print_r('"' . $value[0] . '"');
-                        echo ",";
-                    }
+                    // foreach ($resultChart1 as $key => $value) {
+                    //     print_r('"' . $value[0] . '"');
+                    //     echo ",";
+                    // }
                     ?> -->
-                <!-- </pre>
+    <!-- </pre>
                 <hr>
                 <pre>
                     <?php
-                    print_r($resultChart2);
+                    //print_r($resultChart2);
 
 
                     ?>
@@ -337,12 +339,18 @@ $conn = null;
                         // "#F7464A",
                         // "#F7464A",
 
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd',
+                        '#ffc0cd'
 
                         // 'rgba(54, 162, 235, 0.2)',
                         // 'rgba(255, 206, 86, 0.2)',
@@ -356,7 +364,14 @@ $conn = null;
                         'rgba(255, 99, 132, 1)',
                         'rgba(255, 99, 132, 1)',
                         'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(255, 99, 132, 1)'
+
                         // 'rgba(54, 162, 235, 1)',
                         // 'rgba(255, 206, 86, 1)',
                         // 'rgba(75, 192, 192, 1)',
@@ -411,11 +426,17 @@ $conn = null;
                         ?>
                     ],
                     backgroundColor: [
-                        "#F7464A",
-                        "#46BFBD",
-                        "#FDB45C",
-                        "#949FB1",
-                        "#46BFBD",
+                        // "#F7464A",
+                        // "#46BFBD",
+                        // "#FDB45C",
+                        // "#949FB1",
+                        // "#46BFBD",
+                        "#8adfe2",
+                        "#55c5d1",
+                        "#4699c3",
+                        "#ffd57e",
+                        "#f79c65"
+
                     ],
                     // borderColor: [
                     //     'rgba(255, 99, 132, 1)',
@@ -456,6 +477,38 @@ $conn = null;
                 //     display: false
                 // }
 
+            }
+        });
+
+
+        // chart3 
+        var ctx3 = document.getElementById('myChart3').getContext('2d');
+        var myChart3 = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+                datasets: [{
+                    label: '5678',
+                    data: [50, 62, 62, 53, 45],
+                    backgroundColor: [
+                        '#ce97fc',
+                        '#f6a5ea',
+                        '#f9aa9d',
+                        '#fddf7d',
+                        '#9bfbe0',
+                        // '#f7464a'
+                    ]
+
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    labels: {
+                        render: 'percentage'
+                    }
+                }
             }
         });
     </script>

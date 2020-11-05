@@ -55,6 +55,14 @@ ul li {
     height: 75vh;
 }
 
+.chart-container2{
+    position: relative;
+    height: 300px;
+    /* width: 80vw; */
+    display: flex;
+    align-items: center;
+}
+
 /* #userSpan {
      background: red;
  } */
