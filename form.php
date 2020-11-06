@@ -118,6 +118,7 @@ if (!empty($_GET['insId'])) {
                             <option disabled>Select Chart Type</option>
                             <option value="bar" selected="selected">Bar Chart</option>
                             <option value="doughnut">Dough-nut Chart</option>
+                            <option value="pie">Pie Chart</option>
                         </select>
                         <br>
                         <div class="form-group">

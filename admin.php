@@ -18,6 +18,7 @@ $resultMain = $checkMain->fetchAll();
 
 $timeline =  $resultMain[0]["idfilecsv"];
 $doughnut =  $resultMain[1]["idfilecsv"];
+$pie =  $resultMain[2]["idfilecsv"];
 
 
 if (empty($_GET['id'])) {
@@ -134,9 +135,20 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                 $filename = $val['filename'];
                 $date = strtotime($val['time']);
 
-                if ($val["type"] == 1) {
-                  $type = "Bar";
-                } else $type = "Dough nut";
+                // if ($val["type"] == 1) {
+                //   $type = "Bar";
+                // } else $type = "Dough nut";
+
+                switch ($val["type"]) {
+                  case 1:
+                    $type = "Bar";
+                    break;
+                  case 2:
+                    $type = "Doughnut";
+                    break;
+                  default:
+                    $type = "Pie";
+                }
 
 
 
@@ -150,7 +162,7 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                 echo "<td>" . $type . "</td>";
                 echo "<td>" . date("d/m/Y ", $date) . "</td>";
 
-                if ($id === $timeline || $id === $doughnut) {
+                if ($id === $timeline || $id === $doughnut || $id === $pie) {
                   echo '<td><a class="btn btn-outline-success">Active</a></td>';
                 } else {
                   echo '<td><a class="btn btn-danger"
@@ -203,7 +215,7 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
   <script>
     $(document).ready(function() {
       $('#myTable').DataTable();
-      
+
 
       // console.log("tester");
     });

@@ -84,6 +84,16 @@ switch ($chartType) {
             
         ]';
         break;
+    case 3: //pie chart
+        $typeChart = "'pie'";
+        $backgroundChart = 'backgroundColor: [
+            "#F7464A",
+            "#46BFBD",
+            "#FDB45C",
+            "#949FB1",
+            "#46BFBD",
+        ]';
+        break;
     default: //2 doughnut
         $typeChart = "'doughnut'";
         $backgroundChart = 'backgroundColor: [
