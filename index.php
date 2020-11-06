@@ -40,7 +40,7 @@ include "function.php";
         <div class="row">
             <div class="col-12 col-md-8 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
-                    <h2>Timeline</h2>
+                    <h3>สถิติการเข้าใช้บริการ   ศูนย์บรรณสารฯ 2563</h3>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>
@@ -53,10 +53,13 @@ include "function.php";
 
             <div class="col-12 col-md-4 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
-                    <h2>Ranking</h2>
+                    <h3>สถิติการเข้าใช้แยกตามสำนักวิชามากที่สุด 5 อันดับ</h3>
                     <div class="chart-container">
                         <canvas id="myChart2"></canvas>
                     </div>
+                    <ul>
+                        <li>ตุลาคม 2563</li>
+                    </ul>
                 </div>
 
             </div>
@@ -65,7 +68,7 @@ include "function.php";
         <div class="row">
             <div class="col-12 col-md-4 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
-                    <h2>Ranking 2</h2>
+                    <h3>สถิติการเข้าใช้บริการแยกตามประเภทการเข้าถึง</h3>
                     <div class="chart-container">
                         <canvas id="myChart3"></canvas>
                     </div>
@@ -75,7 +78,7 @@ include "function.php";
 
             <div class="col-12 col-md-8 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
-                    <h2>Circulation</h2>
+                    <h3>สถิติการยืม-คืน ทรัพยากรสารสนเทศ 2563</h3>
                     <div class="table-responsive-xl table-responsive">
                         <table class="table py-4">
                             <thead class="thead-light">
