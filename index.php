@@ -57,7 +57,7 @@ $file = new File();
                         <canvas id="myChart"></canvas>
                     </div>
                     <ul>
-                        <li>Lorem, ipsum.</li>
+                        <!-- <li>Lorem, ipsum.</li> -->
                     </ul>
                 </div>
 
@@ -69,7 +69,7 @@ $file = new File();
                     <div class="chart-container">
                         <canvas id="myChart2"></canvas>
                     </div>
-                    <ul>
+                    <ul class="pt-2" style="padding-left: 0px;">
                         <li>ตุลาคม 2563</li>
                     </ul>
                 </div>
@@ -84,6 +84,9 @@ $file = new File();
                     <div class="chart-container">
                         <canvas id="myChart3"></canvas>
                     </div>
+                    <ul class="pt-2" style="padding-left: 0px;">
+                        <li>ตุลาคม 2563</li>
+                    </ul>
                 </div>
 
             </div>
@@ -92,17 +95,16 @@ $file = new File();
                 <div class="block2 text-center shadow p-3 bg-white rounded">
                     <h3>สถิติการยืม-คืน ทรัพยากรสารสนเทศ 2563</h3>
 
-                    <div>
-                        <?php 
-                            $dataTableFile = $file->data($result[3][6]);
-                            $table = new Table();
-                            $table->setData($dataTableFile);
+                    <?php
 
+                        $dataTableFile = $file->data($result[3][6]);
+                        $table = new Table();
+                        $table->setData($dataTableFile);
+                    
+                    ?>
+                
 
-                        ?>  
-                    </div>
-
-                    <div class="table-responsive-xl table-responsive">
+                    <div class="table-responsive-xl table-responsive pt-2">
                         <table class="table py-4">
                             <thead class="thead-light">
                                 <tr>
@@ -114,7 +116,7 @@ $file = new File();
                                 <tr>
                                     <th scope="row">Borrow</th>
                                     <?php $table->borrowBook(); ?>
-                                    
+
                                 </tr>
                                 <tr>
                                     <th scope="row">Renew</th>
@@ -133,7 +135,7 @@ $file = new File();
                         </table>
                     </div>
                     <ul>
-                        <li>Lorem, ipsum.</li>
+                        <!-- <li>Lorem, ipsum.</li> -->
                     </ul>
                 </div>
 
@@ -159,7 +161,7 @@ $file = new File();
     // print_r($result);
     // echo "</pre>";
 
-    
+
     $dataFilebar = $file->data($result[0][6]);
     $dataFileDoughnut = $file->data($result[1][6]);
     $dataFilePie = $file->data($result[2][6]);
