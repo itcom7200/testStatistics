@@ -38,21 +38,84 @@ class Chart
     {
         $myObj = array();
 
-        foreach($data as $x => $val){
+        foreach ($data as $x => $val) {
             echo "'";
             echo $data[$x][0];
             echo "', ";
         }
     }
 
-    public function value($data){
+    public function value($data)
+    {
         $myObj = array();
 
-        foreach($data as $x => $val){
+        foreach ($data as $x => $val) {
             echo "'";
             echo $data[$x][1];
             echo "', ";
         }
     }
+}
 
+class Table
+{
+
+    private $data;
+
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    public function showData()
+    {
+        echo "<pre>";
+        print_r($this->data);
+        echo "</pre>";
+    }
+
+    // <th scope="col">Jan</th>
+    public function headerTable()
+    {
+        foreach ($this->data as $key => $val) {
+            $value = $val[0];
+
+            echo "<th scope='col'>$value</th>";
+        }
+    }
+
+    public function borrowBook()
+    {
+        foreach ($this->data as $key => $val) {
+            $value = $val[1];
+
+            echo "<td>$value</td>";
+        }
+    }
+    public function renewBook()
+    {
+        foreach ($this->data as $key => $val) {
+            $value = $val[2];
+
+            echo "<td>$value</td>";
+        }
+    }
+
+    public function returnBook()
+    {
+        foreach ($this->data as $key => $val) {
+            $value = $val[3];
+
+            echo "<td>$value</td>";
+        }
+    }
+
+    public function totalBook()
+    {
+        foreach ($this->data as $key => $val) {
+            $value = $val[4];
+
+            echo "<td>$value</td>";
+        }
+    }
 }

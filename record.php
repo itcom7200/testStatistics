@@ -123,11 +123,7 @@ switch ($chartType) {
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-    <!-- <style>
-        *{
-            font-family: 'Sarabun', sans-serif;
-        }
-    </style> -->
+    
 </head>
 
 <body>

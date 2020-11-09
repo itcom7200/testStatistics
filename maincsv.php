@@ -10,21 +10,34 @@ switch ($_GET['filetype']) {
     case 2:
         $idChartDB = 11;  //dough nut chart id = 11
         break;
-    default: //pie chart
-        $idChartDB = 21;
+    case 3:
+        $idChartDB = 21; //pie chart
+        break;
+    case 4:
+        $idChartDB = 31; //table 
+        break;
 }
 
 include "connection.php";
 
-    $stmt = $conn->prepare("UPDATE maincsv SET idfilecsv = :id WHERE id = :filetype");
-    $stmt->bindParam(":id", $_GET['id']);
-    $stmt->bindParam(":filetype", $idChartDB);
+$stmt = $conn->prepare("UPDATE maincsv SET idfilecsv = :id WHERE id = :filetype");
+$stmt->bindParam(":id", $_GET['id']);
+$stmt->bindParam(":filetype", $idChartDB);
 
-    $result = $stmt->execute();
-    echo $result;
+$result = $stmt->execute();
+echo $result;
 
-    // header กลับไปเพื่อแจ้งเตือน
+// header กลับไปเพื่อแจ้งเตือน
 
-    $id = $_GET['id'];
+$id = $_GET['id'];
+// $header = "location: record.php?id=$id&alert=true";
+
+if ($idChartDB == 31) {
+
+    $header = "location: table.php?id=$id&alert=true";
+} else {
+
     $header = "location: record.php?id=$id&alert=true";
-    header($header);
+}
+
+header($header);

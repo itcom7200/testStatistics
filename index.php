@@ -1,5 +1,17 @@
 <?php
 include "function.php";
+
+//query
+$stmt = $conn->query("select * 
+from maincsv
+inner join filecsv
+on maincsv.idfilecsv = filecsv.id");
+
+$stmt->execute();
+$result = $stmt->fetchAll();
+
+$file = new File();
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +52,7 @@ include "function.php";
         <div class="row">
             <div class="col-12 col-md-8 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
-                    <h3>สถิติการเข้าใช้บริการ   ศูนย์บรรณสารฯ 2563</h3>
+                    <h3>สถิติการเข้าใช้บริการ ศูนย์บรรณสารฯ 2563</h3>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>
@@ -79,85 +91,43 @@ include "function.php";
             <div class="col-12 col-md-8 pb-4">
                 <div class="block2 text-center shadow p-3 bg-white rounded">
                     <h3>สถิติการยืม-คืน ทรัพยากรสารสนเทศ 2563</h3>
+
+                    <div>
+                        <?php 
+                            $dataTableFile = $file->data($result[3][6]);
+                            $table = new Table();
+                            $table->setData($dataTableFile);
+
+
+                        ?>  
+                    </div>
+
                     <div class="table-responsive-xl table-responsive">
                         <table class="table py-4">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Jan</th>
-                                    <th scope="col">Feb</th>
-                                    <th scope="col">Mar</th>
-                                    <th scope="col">Apr</th>
-                                    <th scope="col">May</th>
-                                    <th scope="col">Jun</th>
-                                    <th scope="col">Jul</th>
-                                    <th scope="col">Aug</th>
-                                    <th scope="col">Sep</th>
-                                    <th scope="col">Oct</th>
-                                    <th scope="col">Nov</th>
-                                    <th scope="col">Dec</th>
+                                    <?php $table->headerTable(); ?>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">Borrow</th>
-                                    <td>2380</td>
-                                    <td>238</td>
-                                    <td>54</td>
-                                    <td>238</td>
-                                    <td>238</td>
-                                    <td>54</td>
-                                    <td>238</td>
-                                    <td>238</td>
-                                    <td>54</td>
-                                    <td>238</td>
-                                    <td>238</td>
-                                    <td>54</td>
+                                    <?php $table->borrowBook(); ?>
+                                    
                                 </tr>
                                 <tr>
                                     <th scope="row">Renew</th>
-                                    <td>22</td>
-                                    <td>22</td>
-                                    <td>0</td>
-                                    <td>22</td>
-                                    <td>22</td>
-                                    <td>0</td>
-                                    <td>22</td>
-                                    <td>22</td>
-                                    <td>0</td>
-                                    <td>22</td>
-                                    <td>22</td>
-                                    <td>0</td>
+                                    <?php $table->renewBook(); ?>
+
                                 </tr>
                                 <tr>
                                     <th scope="row">Return</th>
-                                    <td>247</td>
-                                    <td>247</td>
-                                    <td>53</td>
-                                    <td>247</td>
-                                    <td>247</td>
-                                    <td>53</td>
-                                    <td>247</td>
-                                    <td>2407</td>
-                                    <td>53</td>
-                                    <td>247</td>
-                                    <td>247</td>
-                                    <td>53</td>
+                                    <?php $table->returnBook(); ?>
                                 </tr>
                                 <tr>
                                     <th scope="row">Total</th>
-                                    <td>507</td>
-                                    <td>507</td>
-                                    <td>107</td>
-                                    <td>507</td>
-                                    <td>507</td>
-                                    <td>107</td>
-                                    <td>507</td>
-                                    <td>507</td>
-                                    <td>107</td>
-                                    <td>5007</td>
-                                    <td>507</td>
-                                    <td>107</td>
+                                    <?php $table->totalBook(); ?>
                                 </tr>
                             </tbody>
                         </table>
@@ -183,20 +153,13 @@ include "function.php";
     <script src="chartjs-plugin-labels.js"></script>
 
     <?php
-    //query
-    $stmt = $conn->query("select * 
-    from maincsv
-    inner join filecsv
-    on maincsv.idfilecsv = filecsv.id");
 
-    $stmt->execute();
-    $result = $stmt->fetchAll();
 
     // echo "<pre>";
     // print_r($result);
     // echo "</pre>";
 
-    $file = new File();
+    
     $dataFilebar = $file->data($result[0][6]);
     $dataFileDoughnut = $file->data($result[1][6]);
     $dataFilePie = $file->data($result[2][6]);
