@@ -19,6 +19,7 @@ $resultMain = $checkMain->fetchAll();
 $timeline =  $resultMain[0]["idfilecsv"];
 $doughnut =  $resultMain[1]["idfilecsv"];
 $pie =  $resultMain[2]["idfilecsv"];
+$table = $resultMain[3]["idfilecsv"];
 
 
 if (empty($_GET['id'])) {
@@ -102,7 +103,7 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
 
   <div class="container pt-4">
     <div class="row">
-      <div class="col-md">
+      <div class="col-md shadow p-3 bg-white">
 
         <?php
         if (!empty($_GET['id'])) {
@@ -146,13 +147,19 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                   case 2:
                     $type = "Doughnut";
                     break;
-                  default:
+                  case 3:
                     $type = "Pie";
+                    break;
+                  case 4:
+                    $type = "Table";
+                    break;
                 }
 
-
-
                 $link = "<td><a href='record.php?id=$id'>$file</a></td>";
+
+                if ($val[4] === "4") { // if table redirect to another page
+                  $link = "<td><a href='table.php?id=$id'>$file</a></td>";
+                }
 
                 $x++;
                 echo "<tr>";
@@ -162,7 +169,7 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                 echo "<td>" . $type . "</td>";
                 echo "<td>" . date("d/m/Y ", $date) . "</td>";
 
-                if ($id === $timeline || $id === $doughnut || $id === $pie) {
+                if ($id === $timeline || $id === $doughnut || $id === $pie || $id === $table) {
                   echo '<td><a class="btn btn-outline-success">Active</a></td>';
                 } else {
                   echo '<td><a class="btn btn-danger"

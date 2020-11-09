@@ -84,25 +84,26 @@ switch ($chartType) {
             
         ]';
         break;
+    case 2: //2 doughnut
+        $typeChart = "'doughnut'";
+        $backgroundChart = 'backgroundColor: [
+            "#8adfe2",
+            "#55c5d1",
+            "#4699c3",
+            "#ffd57e",
+            "#f79c65"
+        ]';
+        break;
     case 3: //pie chart
         $typeChart = "'pie'";
         $backgroundChart = 'backgroundColor: [
-            "#F7464A",
-            "#46BFBD",
-            "#FDB45C",
-            "#949FB1",
-            "#46BFBD",
-        ]';
+                "#8adfe2",
+                "#55c5d1",
+                "#4699c3",
+                "#ffd57e",
+                "#f79c65"
+            ]';
         break;
-    default: //2 doughnut
-        $typeChart = "'doughnut'";
-        $backgroundChart = 'backgroundColor: [
-            "#F7464A",
-            "#46BFBD",
-            "#FDB45C",
-            "#949FB1",
-            "#46BFBD",
-        ]';
 }
 
 
@@ -199,7 +200,7 @@ switch ($chartType) {
 
 
                 <div class="text-center">
-                    <h2>Timeline</h2>
+                    <h2>Example</h2>
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>

@@ -5,7 +5,7 @@ $template_Alert = null;
 include "connection.php";
 
 if (!empty($_GET['insId'])) {
-    // $test = "ins id eiei";
+
     $stmt = $conn->prepare("SELECT * FROM filecsv where id = :id");
     $stmt->bindParam(":id", $_GET["insId"]);
 
@@ -64,12 +64,12 @@ if (!empty($_GET['insId'])) {
                             <a class="dropdown-item" href="barchart.php">Bar Chart</a>
                             <a class="dropdown-item" href="dnchart.php">Dough-nut</a>
                             <!-- <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a> -->
+                            <a class="dropdown-item" href="#">Something else here</a> -->
                         </div>
                     </li>
                     <!-- <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li> -->
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li> -->
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <span id="userSpan" class="navbar-text px-5 text-success">
@@ -119,6 +119,7 @@ if (!empty($_GET['insId'])) {
                             <option value="bar" selected="selected">Bar Chart</option>
                             <option value="doughnut">Dough-nut Chart</option>
                             <option value="pie">Pie Chart</option>
+                            <option value="table">Table</option>
                         </select>
                         <br>
                         <div class="form-group">

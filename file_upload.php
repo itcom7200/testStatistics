@@ -19,8 +19,11 @@ switch ($_POST['chart']) {
         $chart_type = 2;
         break;
 
-    default:
+    case "pie":
         $chart_type = 3;
+        break;
+    default:
+        $chart_type = 4;
 }
 
 // echo "chart -> ".$chart_type;

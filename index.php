@@ -313,6 +313,7 @@ include "function.php";
                 plugins: {
                     labels: [{
                         render: 'percentage',
+                        precision: 2
                     }]
                 }
             }
@@ -350,6 +351,7 @@ include "function.php";
                 plugins: {
                     labels: [{
                         render: 'percentage',
+                        precision: 2
                     }]
                 }
             }
