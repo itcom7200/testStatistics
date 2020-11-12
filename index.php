@@ -48,6 +48,7 @@ $file = new File();
         </nav>
     </div>
 
+
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 pb-4">
@@ -56,8 +57,8 @@ $file = new File();
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>
-                    <ul>
-                        <!-- <li>Lorem, ipsum.</li> -->
+                    <ul class="pt-2" style="padding-left: 0px;">
+                        <li><?php echo $result[0]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -70,7 +71,7 @@ $file = new File();
                         <canvas id="myChart2"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li>ตุลาคม 2563</li>
+                        <li><?php echo $result[1]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -85,7 +86,7 @@ $file = new File();
                         <canvas id="myChart3"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li>ตุลาคม 2563</li>
+                        <li><?php echo $result[2]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -97,14 +98,15 @@ $file = new File();
 
                     <?php
 
-                        $dataTableFile = $file->data($result[3][6]);
+                        $dataTableFile = $file->data($result[3]["filename"]);
                         $table = new Table();
                         $table->setData($dataTableFile);
                     
                     ?>
                 
 
-                    <div class="table-responsive-xl table-responsive pt-2">
+                    <div class="table-responsive pt-2"> <!-- table-responsive-xl -->
+                        
                         <table class="table py-4">
                             <thead class="thead-light">
                                 <tr>
@@ -134,8 +136,8 @@ $file = new File();
                             </tbody>
                         </table>
                     </div>
-                    <ul>
-                        <!-- <li>Lorem, ipsum.</li> -->
+                    <ul class="pt-2" style="padding-left: 0px;">
+                        <li><?php echo $result[3]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -162,9 +164,9 @@ $file = new File();
     // echo "</pre>";
 
 
-    $dataFilebar = $file->data($result[0][6]);
-    $dataFileDoughnut = $file->data($result[1][6]);
-    $dataFilePie = $file->data($result[2][6]);
+    $dataFilebar = $file->data($result[0]["filename"]);
+    $dataFileDoughnut = $file->data($result[1]["filename"]);
+    $dataFilePie = $file->data($result[2]["filename"]);
 
     $barChart = new Chart();
     $dnChart = new Chart();

@@ -187,8 +187,9 @@ switch ($chartType) {
                 if ($_GET['alert'] === "true") {
                     echo $template_Alert;
                 }
-
+                
                 ?>
+
             </div>
 
             <div id="chart" class="col-md">
@@ -200,18 +201,10 @@ switch ($chartType) {
                     <div class="chart-container">
                         <canvas id="myChart"></canvas>
                     </div>
-                    <?php
-                    if ($chartType == 1) {
-                        echo "<ul>
-                                    <li>Lorem, ipsum.</li>
-                                    <!-- <li>บุคลากร: 15 คน</li> -->
-                                </ul>";
-                    }
-                    ?>
-                    <!-- <ul>
-                        <li>นักศึกษา 1226 คน</li>
-                        <li>บุคลากร: 15 คน</li>
-                    </ul> -->
+                    
+                    <ul>
+                        <li><?php echo $result[0]['note']; ?></li>
+                    </ul>
                 </div>
 
             </div>

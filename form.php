@@ -110,7 +110,7 @@ if (!empty($_GET['insId'])) {
                     </div>
                     <form action="file_upload.php" method="POST" class="shadow p-3 bg-white" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Enter Filename: </label>
+                            <label for="exampleFormControlFile">Enter Filename: </label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter File Name" required>
                             <small class="form-text text-muted">ตัวอย่างชื่อไฟล์เช่น เช่น "ข้อมูลเดือนตุลาคม 63"</small>
                         </div>
@@ -122,6 +122,10 @@ if (!empty($_GET['insId'])) {
                             <option value="table">Table</option>
                         </select>
                         <br>
+                        <div class="form-group">
+                            <label for="exampleFormControlNote">Enter Note: </label>
+                            <input type="text" class="form-control" id="note" name="note" placeholder="Enter Note for File">
+                        </div>
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Example file input</label>
                             <input type="file" class="form-control-file" id="fileName" name="file" required>

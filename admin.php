@@ -157,7 +157,7 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
 
                 $link = "<td><a href='record.php?id=$id'>$file</a></td>";
 
-                if ($val[4] === "4") { // if table redirect to another page
+                if ($val["type"] === "4") { // if table redirect to another page
                   $link = "<td><a href='table.php?id=$id'>$file</a></td>";
                 }
 
@@ -174,7 +174,7 @@ $template_Alert = '<div class="alert alert-success" role="alert">' . $alert . '<
                 } else {
                   echo '<td><a class="btn btn-danger"
                       href="del_file.php?id=' . $id . '&filepath=' . $val['filename'] . '
-                      " target="_blank">Delete</a></td>';
+                      ">Delete</a></td>';
                 }
 
 

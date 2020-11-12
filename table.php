@@ -170,7 +170,7 @@ $table->setData($myObj);
                     </div>
 
                     <ul>
-                        <li>Lorem, ipsum.</li>
+                        <li><?php echo $result[0]['note']; ?></li>
                     </ul>
                 </div>
 

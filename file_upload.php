@@ -43,10 +43,11 @@ move_uploaded_file($tmpFile, $destination);
 
 include 'connection.php';
 
-$stmt = $conn->prepare("INSERT INTO filecsv (name, filename, type) value (:name, :filename, :type)");
+$stmt = $conn->prepare("INSERT INTO filecsv (name, filename, type, note) value (:name, :filename, :type, :note)");
 $stmt->bindParam(':name', $_POST['name']);
 $stmt->bindParam(':filename', $randomName);
 $stmt->bindParam(':type', $chart_type);
+$stmt->bindParam(':note', $_POST['note']);
 
 print_r($stmt);
 $stmt->execute();

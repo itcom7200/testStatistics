@@ -86,36 +86,112 @@ class Table
 
     public function borrowBook()
     {
-        foreach ($this->data as $key => $val) {
-            $value = $val[1];
+        // foreach ($this->data as $key => $val) {
+        //     $value = $val[1];
 
-            echo "<td>$value</td>";
+        //     echo "<td>$value</td>";
+        // }
+        $data = $this->data;
+
+        $i = 0;
+        $len = count($data);
+
+        foreach ($data as $item) {
+
+            $value = $item[1];
+
+            if ($i == $len - 1) {
+                echo "<td><b>$value</b></td>";
+            } else {
+                echo "<td>$value</td>";
+            }
+
+            $i++;
         }
     }
     public function renewBook()
     {
-        foreach ($this->data as $key => $val) {
-            $value = $val[2];
+        // foreach ($this->data as $key => $val) {
+        //     $value = $val[2];
 
-            echo "<td>$value</td>";
+        //     echo "<td>$value</td>";
+        // }
+        $data = $this->data;
+
+        $i = 0;
+        $len = count($data);
+
+        foreach ($data as $item) {
+
+            $value = $item[2];
+
+            if ($i == $len - 1) {
+                echo "<td><b>$value</b></td>";
+            } else {
+                echo "<td>$value</td>";
+            }
+
+            $i++;
         }
     }
 
     public function returnBook()
     {
-        foreach ($this->data as $key => $val) {
-            $value = $val[3];
+        // foreach ($this->data as $key => $val) {
+        //     $value = $val[3];
 
-            echo "<td>$value</td>";
+        //     echo "<td>$value</td>";
+        // }
+        $data = $this->data;
+
+        $i = 0;
+        $len = count($data);
+
+        foreach ($data as $item) {
+
+            $value = $item[3];
+
+            if ($i == $len - 1) {
+                echo "<td><b>$value</b></td>";
+            } else {
+                echo "<td>$value</td>";
+            }
+
+            $i++;
         }
     }
 
     public function totalBook()
     {
+
+
         foreach ($this->data as $key => $val) {
             $value = $val[4];
 
-            echo "<td>$value</td>";
+            echo "<td><b>$value</b></td>";
+        }
+    }
+
+    public function checkLast()
+    {
+        $data = $this->data;
+
+        $i = 0;
+        $len = count($data);
+
+        // echo $len;
+
+        foreach ($data as $item) {
+
+            $value = $item[1];
+
+            if ($i == $len - 1) {
+                echo "<td><b>$value</b></td>";
+            } else {
+                echo "<td>$value</td>";
+            }
+
+            $i++;
         }
     }
 }
