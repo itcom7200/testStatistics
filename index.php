@@ -40,7 +40,7 @@ $file = new File();
                 <ul class="navbar-nav mr-auto">
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <a class="btn btn-primary my-2 my-sm-0" href="login.php">Log In</a>
+                    <a class="btn btn-primary my-2 my-sm-0" target="_blank" href="login.php">Log In</a>
                 </form>
 
 
@@ -52,7 +52,7 @@ $file = new File();
         <div class="row">
             <div class="col-md">
                 <pre>
-                    <?php //print_r($result); ?>
+                    <?php// print_r($result); ?>
                 </pre>
             </div>
         </div>
@@ -68,7 +68,7 @@ $file = new File();
                         <canvas id="myChart"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[1]["note"]; ?></li>
+                        <li><?php echo $result[0]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -81,7 +81,7 @@ $file = new File();
                         <canvas id="myChart2"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[2]["note"]; ?></li>
+                        <li><?php echo $result[1]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -96,7 +96,7 @@ $file = new File();
                         <canvas id="myChart3"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[3]["note"]; ?></li>
+                        <li><?php echo $result[2]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -108,7 +108,7 @@ $file = new File();
 
                     <?php
 
-                        $dataTableFile = $file->data($result[0]["filename"]);
+                        $dataTableFile = $file->data($result[3]["filename"]);
                         $table = new Table();
                         $table->setData($dataTableFile);
                     
@@ -147,7 +147,7 @@ $file = new File();
                         </table>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[0]["note"]; ?></li>
+                        <li><?php echo $result[3]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -174,9 +174,9 @@ $file = new File();
     // echo "</pre>";
 
 
-    $dataFilebar = $file->data($result[1]["filename"]);
-    $dataFileDoughnut = $file->data($result[2]["filename"]);
-    $dataFilePie = $file->data($result[3]["filename"]);
+    $dataFilebar = $file->data($result[0]["filename"]);
+    $dataFileDoughnut = $file->data($result[1]["filename"]);
+    $dataFilePie = $file->data($result[2]["filename"]);
 
     $barChart = new Chart();
     $dnChart = new Chart();
@@ -289,8 +289,8 @@ $file = new File();
                 maintainAspectRatio: false,
                 plugins: {
                     labels: [{
-                        render: 'percentage',
-                        precision: 2
+                        render: 'percentage'
+                        // precision: 2
                     }]
                 }
             }

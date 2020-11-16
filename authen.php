@@ -10,7 +10,7 @@ if(empty($_POST['username'])){
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if ($username === "admin" && $password === "B39CHPA") {
+if ($username === "admin" && $password === "clm@min") {
     // echo "Hello world!"; // start session
     $_SESSION['user'] = "admin";
     header('location: admin.php');

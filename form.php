@@ -112,7 +112,7 @@ if (!empty($_GET['insId'])) {
                         <div class="form-group">
                             <label for="exampleFormControlFile">Enter Filename: </label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter File Name" required>
-                            <small class="form-text text-muted">ตัวอย่างชื่อไฟล์เช่น เช่น "ข้อมูลเดือนตุลาคม 63"</small>
+                            <small class="form-text text-muted">ตัวอย่างชื่อไฟล์เช่น "ข้อมูลเดือนตุลาคม 63"</small>
                         </div>
                         <select class="form-control" id="chart" name="chart" required>
                             <option disabled>Select Chart Type</option>
