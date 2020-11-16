@@ -48,15 +48,15 @@ $file = new File();
         </nav>
     </div>
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-md">
                 <pre>
-                    <?php print_r($result); ?>
+                    <?php //print_r($result); ?>
                 </pre>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="container">
