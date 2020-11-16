@@ -48,6 +48,16 @@ $file = new File();
         </nav>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <pre>
+                    <?php print_r($result); ?>
+                </pre>
+            </div>
+        </div>
+    </div>
+
 
     <div class="container">
         <div class="row">
@@ -58,7 +68,7 @@ $file = new File();
                         <canvas id="myChart"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[0]["note"]; ?></li>
+                        <li><?php echo $result[1]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -71,7 +81,7 @@ $file = new File();
                         <canvas id="myChart2"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[1]["note"]; ?></li>
+                        <li><?php echo $result[2]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -86,7 +96,7 @@ $file = new File();
                         <canvas id="myChart3"></canvas>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[2]["note"]; ?></li>
+                        <li><?php echo $result[3]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -98,14 +108,14 @@ $file = new File();
 
                     <?php
 
-                        $dataTableFile = $file->data($result[3]["filename"]);
+                        $dataTableFile = $file->data($result[0]["filename"]);
                         $table = new Table();
                         $table->setData($dataTableFile);
                     
                     ?>
                 
 
-                    <div class="table-responsive pt-2"> <!-- table-responsive-xl -->
+                    <div class="table-responsive pt-2"> <!-- table-responsive-xl table-sm -->
                         
                         <table class="table py-4">
                             <thead class="thead-light">
@@ -137,7 +147,7 @@ $file = new File();
                         </table>
                     </div>
                     <ul class="pt-2" style="padding-left: 0px;">
-                        <li><?php echo $result[3]["note"]; ?></li>
+                        <li><?php echo $result[0]["note"]; ?></li>
                     </ul>
                 </div>
 
@@ -164,9 +174,9 @@ $file = new File();
     // echo "</pre>";
 
 
-    $dataFilebar = $file->data($result[0]["filename"]);
-    $dataFileDoughnut = $file->data($result[1]["filename"]);
-    $dataFilePie = $file->data($result[2]["filename"]);
+    $dataFilebar = $file->data($result[1]["filename"]);
+    $dataFileDoughnut = $file->data($result[2]["filename"]);
+    $dataFilePie = $file->data($result[3]["filename"]);
 
     $barChart = new Chart();
     $dnChart = new Chart();
